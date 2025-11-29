@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Editar {{ producto.nombre }}{% endblock %}
+
+{% block content %}
+    <h1>Editar Producto</h1>
+
+    <form method="POST" class="mt-4" style="max-width: 500px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <label>Dimensiones:</label>
+        <input type="text" name="dimensiones" class="form-control mb-3" value="{% if producto.detalle %}{{ producto.detalle.dimensiones }}{% endif %}" placeholder="10x20x30 cm">
+
+        <label>Peso:</label>
+        <input type="number" name="peso" class="form-control mb-3" step="0.1" value="{% if producto.detalle %}{{ producto.detalle.peso }}{% endif %}" placeholder="2.5">
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

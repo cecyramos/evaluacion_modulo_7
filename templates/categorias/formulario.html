@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ accion }} Categoría{% endblock %}
+
+{% block content %}
+    <h1>{{ accion }} Categoría</h1>
+
+    {% if accion == 'Eliminar' %}
+        <p>¿Estás seguro de que deseas eliminar <strong>{{ categoria.nombre }}</strong>?</p>
+        <form method="POST" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        <a href="{% url 'lista_categorias' %}" class="btn btn-secondary">Cancelar</a>
+    {% else %}
+        <form method="POST" class="mt-4" style="max-width: 500px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">{{ accion }}</button>
+            <a href="{% url 'lista_categorias' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    {% endif %}
+{% endblock %}

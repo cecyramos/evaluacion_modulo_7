@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Etiquetas{% endblock %}
+
+{% block content %}
+    <h1>Etiquetas</h1>
+    <a href="{% url 'crear_etiqueta' %}" class="btn btn-success mb-3">Crear Etiqueta</a>
+
+    {% if etiquetas %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etiqueta in etiquetas %}
+                    <tr>
+                        <td>{{ etiqueta.nombre }}</td>
+                        <td>
+                            <a href="{% url 'editar_etiqueta' etiqueta.id %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'eliminar_etiqueta' etiqueta.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay etiquetas.</p>
+    {% endif %}
+{% endblock %}
