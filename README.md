@@ -35,7 +35,7 @@ Sistema web para gestionar productos, categorías y etiquetas con operaciones CR
 
 ### Paso 1: Clonar el repositorio
 ```bash
-cd producto_app
+https://github.com/cecyramos/evaluacion_modulo_7.git
 ```
 
 ### Paso 2: Crear entorno virtual
